@@ -78,7 +78,7 @@ export default function Home() {
           <input
             id="precision"
             value={circlePrecision}
-            onChange={setCirclePrecision}
+            onChange={(event) => setCirclePrecision(+event.target.value)}
             type="number"
             placeholder="Precision"
           />
@@ -87,7 +87,7 @@ export default function Home() {
           <label htmlFor="precision">Distance:</label>
           <input
             value={circleMinDistance}
-            onChange={setCircleMinDistance}
+            onChange={(event) => setCircleMinDistance(+event.target.value)}
             type="number"
             placeholder="Min distance"
           />
