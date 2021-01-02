@@ -20,7 +20,11 @@ export default function Home() {
     ctx.drawImage(videoElement.current, 0, 0, maxVideoSize, maxVideoSize);
     setTimeout(async () => {
       const image = ctx.getImageData(0, 0, maxVideoSize, maxVideoSize);
-      const { outputImage, count } = await processCircles(image);
+      const { outputImage, count } = await processCircles(
+        image,
+        circleMinDistance,
+        circlePrecision
+      );
       ctx.putImageData(outputImage, 0, 0);
       setProcessing(false);
       setCount(count);
@@ -67,23 +71,27 @@ export default function Home() {
   }
 
   return (
-    <div>
+    <div className="wrapper">
       <div className="inputs">
-        <label htmlFor="precision">Precision:</label>
-        <input
-          id="precision"
-          value={circlePrecision}
-          onChange={setCirclePrecision}
-          type="number"
-          placeholder="Precision"
-        />
-        <label htmlFor="precision">Distance:</label>
-        <input
-          value={circleMinDistance}
-          onChange={setCircleMinDistance}
-          type="number"
-          placeholder="Min distance"
-        />
+        <div className="form-group">
+          <label htmlFor="precision">Precision:</label>
+          <input
+            id="precision"
+            value={circlePrecision}
+            onChange={setCirclePrecision}
+            type="number"
+            placeholder="Precision"
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="precision">Distance:</label>
+          <input
+            value={circleMinDistance}
+            onChange={setCircleMinDistance}
+            type="number"
+            placeholder="Min distance"
+          />
+        </div>
       </div>
       <div className="video-wrapper">
         <video className="video" playsInline ref={videoElement} />
