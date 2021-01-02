@@ -1,4 +1,4 @@
-export async function processCircles(image) {
+export async function processCircles(image, minDistance, precision) {
   return new Promise((res, rej) => {
     try {
       const img = cv.matFromImageData(image);
@@ -9,7 +9,7 @@ export async function processCircles(image) {
       cv.cvtColor(img, greyImg, cv.COLOR_BGR2GRAY);
       cv.convertScaleAbs(greyImg, greyImg, 0.85, 0);
     //   cv.threshold(greyImg, binary, 160, 250, cv.THRESH_BINARY);
-      cv.HoughCircles(greyImg, circles, cv.HOUGH_GRADIENT, 1, 10, 100, 20, 1, 25);
+      cv.HoughCircles(greyImg, circles, cv.HOUGH_GRADIENT, 1, minDistance, 100, precision, 1, 25);
       // draw circles
       for (let i = 0; i < circles.cols; ++i) {
         let x = circles.data32F[i * 3];

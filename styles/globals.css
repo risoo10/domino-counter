@@ -17,7 +17,7 @@ a {
 
 
 .video-wrapper {
-  height: calc(100vh - 60px);
+  height: 100vh;
   width: 100%;
   position: relative;
 
@@ -32,11 +32,30 @@ a {
 button.close-canvas {
   top: 30px;
   right: 20px;
-  position: absolute;
+  position: fixed;
   border-radius: 150px;
   z-index: 10;
   width: 40px;
   height: 40px;
+}
+
+.inputs {
+  display: flex;
+  margin-top: 1rem;
+  padding: 0 0.5rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.inputs label {
+  width: 100%;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.inputs input {
+  flex: 1;
+  margin: 0 0.5rem;
 }
 
 button {
@@ -56,6 +75,8 @@ button {
 }
 
 .action-button {
+  position: fixed;
+  bottom: 0;
   height: 60px;
   width: 100%;
 }

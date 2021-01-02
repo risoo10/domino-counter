@@ -9,6 +9,8 @@ export default function Home() {
   const [canvasVisible, setCanvasVisible] = useState(false);
   const videoElement = useRef(null);
   const canvasEl = useRef(null);
+  const [circlePrecision, setCirclePrecision] = useState(30);
+  const [circleMinDistance, setCircleMinDistance] = useState(15);
   const maxVideoSize = 400;
 
   function onClick() {
@@ -66,6 +68,23 @@ export default function Home() {
 
   return (
     <div>
+      <div className="inputs">
+        <label htmlFor="precision">Precision:</label>
+        <input
+          id="precision"
+          value={circlePrecision}
+          onChange={setCirclePrecision}
+          type="number"
+          placeholder="Precision"
+        />
+        <label htmlFor="precision">Distance:</label>
+        <input
+          value={circleMinDistance}
+          onChange={setCircleMinDistance}
+          type="number"
+          placeholder="Min distance"
+        />
+      </div>
       <div className="video-wrapper">
         <video className="video" playsInline ref={videoElement} />
         <canvas
